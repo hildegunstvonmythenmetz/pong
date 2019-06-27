@@ -47,10 +47,5 @@ rect_pivot_offset = Vector2( -797.694, -66.4644 )
 [node name="Center Line" type="Node2D" parent="."]
 position = Vector2( 512, 384 )
 script = ExtResource( 8 )
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
-one_shot = true
 [connection signal="body_entered" from="Trigger Left" to="." method="_on_Trigger_Left_body_entered"]
 [connection signal="body_entered" from="Trigger Right" to="." method="_on_Trigger_Right_body_entered"]
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

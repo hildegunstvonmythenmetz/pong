@@ -15,8 +15,7 @@ func _restart():
 		PongConfig.ball.free()
 	PongConfig.ball = ball_scene.instance()
 	add_child(PongConfig.ball)
-	# PongConfig.ball.start()
-	get_node("Timer").start()
+	PongConfig.ball.start()
 	
 func _on_Trigger_Left_body_entered(body):
 	if (body.name == "Ball"):
@@ -28,7 +27,3 @@ func _on_Trigger_Right_body_entered(body):
 	if (body.name == "Ball"):
 		get_node("Left/Counter").score()
 		_restart()
-
-
-func _on_Timer_timeout():
-	PongConfig.ball.start()
