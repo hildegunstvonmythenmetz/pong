@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/index.png-bc087573c8aeb476bf9e8786848bbc95.stex"
+path="res://.import/index.png-3016f19b5a0a8ad17a5d3f49d40ea707.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gh-pages/index.png"
-dest_files=[ "res://.import/index.png-bc087573c8aeb476bf9e8786848bbc95.stex" ]
+source_file="res://html5export/index.png"
+dest_files=[ "res://.import/index.png-3016f19b5a0a8ad17a5d3f49d40ea707.stex" ]
 
 [params]
 
