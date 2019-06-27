@@ -1,0 +1,56 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://GameManager.gd" type="Script" id=1]
+[ext_resource path="res://Wall Top.gd" type="Script" id=2]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Enemy Controller.gd" type="Script" id=4]
+[ext_resource path="res://Player Controller.gd" type="Script" id=5]
+[ext_resource path="res://Trigger_Wall.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Counter.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Center Line.gd" type="Script" id=8]
+
+[sub_resource type="PhysicsMaterial" id=1]
+friction = 0.0
+
+[node name="Pong" type="Node2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Wall Top" type="StaticBody2D" parent="."]
+physics_material_override = SubResource( 1 )
+script = ExtResource( 2 )
+
+[node name="Enemy" parent="." instance=ExtResource( 3 )]
+position = Vector2( 10, 600 )
+script = ExtResource( 4 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+script = ExtResource( 5 )
+
+[node name="Trigger Left" parent="." instance=ExtResource( 6 )]
+position_multiplier = -1
+
+[node name="Trigger Right" parent="." instance=ExtResource( 6 )]
+
+[node name="Left" parent="." instance=ExtResource( 7 )]
+margin_bottom = 220.0
+rect_pivot_offset = Vector2( -797.694, -66.4644 )
+
+[node name="Right" parent="." instance=ExtResource( 7 )]
+margin_left = 510.0
+margin_right = 1022.0
+margin_bottom = 220.0
+rect_pivot_offset = Vector2( -797.694, -66.4644 )
+
+[node name="Center Line" type="Node2D" parent="."]
+position = Vector2( 512, 384 )
+script = ExtResource( 8 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+[connection signal="body_entered" from="Trigger Left" to="." method="_on_Trigger_Left_body_entered"]
+[connection signal="body_entered" from="Trigger Right" to="." method="_on_Trigger_Right_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

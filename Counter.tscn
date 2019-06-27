@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://pixeled.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Counter Player.gd" type="Script" id=2]
+
+[node name="Left" type="CenterContainer"]
+margin_right = 512.0
+margin_bottom = 768.0
+
+[node name="Counter" type="Label" parent="."]
+margin_left = 255.0
+margin_top = 384.0
+margin_right = 256.0
+margin_bottom = 384.0
+grow_horizontal = 0
+grow_vertical = 0
+custom_fonts/font = ExtResource( 1 )
+text = "0
+"
+align = 1
+valign = 1
+autowrap = true
+script = ExtResource( 2 )
