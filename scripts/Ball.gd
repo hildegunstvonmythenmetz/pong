@@ -53,17 +53,23 @@ func _physics_process(delta):
 		
 		# reset speed if the ball gets hit by a racket
 		if collision.collider.get_meta("Player"):
-			print("collision")
-			# motion = motion.normalized() * speed
-			# include motions of a racket into the direction of the ball
-			# opposite += (collision.collider_velocity / 2)
-		
+			speed = initial_speed
+
+			# calculate relative speed of the player
+			var player_velocity = collision.collider_velocity
+			var max_player_velocity = PongConfig.speed
+			var relative_player_velocity = player_velocity.y / max_player_velocity
+
+			dir.y += relative_player_velocity
+
+			if relative_player_velocity < 0:
+				relative_player_velocity *= -1
+			speed += relative_player_velocity * 100
 			# limit the angle of a shot
 			# var motion_speed = motion.length() if motion.length() >= speed else speed
-			# motion = motion.normalized()
-			# motion.y = clamp(motion.y, -0.8, 0.8)
-			# motion = motion * motion_speed
-		
+			dir.y = clamp(dir.y, -0.8, 0.8)
+		dir = dir.normalized()
+
 	var distance = motion.length()
 	speed_o_meter.text = str(distance / delta) 
 
