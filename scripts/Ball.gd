@@ -4,12 +4,14 @@ extends KinematicBody2D
 # var a = 2
 # var b = "text"
 
-var speed = PongConfig.bspeed
+var initial_speed = PongConfig.bspeed
 var x = PongConfig.bextends
 var screen_size
 var started = false
 var speed_o_meter
 var motion
+var speed
+var dir
 
 func _ready():
 	screen_size = get_viewport().size
@@ -24,8 +26,9 @@ func start():
 	rand_gen.randomize()
 	var deg = rand_gen.randi_range(225, 315)
 	var angle = deg2rad(deg)
-	var dir = Vector2(sin(angle), cos(angle)).normalized()
-	motion = dir * speed
+	dir = Vector2(sin(angle), cos(angle)).normalized()
+	# motion = dir * initial_speed
+	speed = initial_speed
 	started = true
 	
 func _add_collision_shape():
@@ -36,28 +39,30 @@ func _add_collision_shape():
 func _physics_process(delta):
 	if not started:
 		return
+	motion = dir * speed
 	var collision = move_and_collide(motion * delta)
 	
 	if collision:
-		# reset speed if the ball gets hit by a racket
-		if collision.collider.get_meta("Player"):
-			motion = motion.normalized() * speed
 		# calculate new direction
 		var normal = collision.normal
 		
-		var adjacent = (motion.dot(normal)) * normal
-		var opposite = motion - adjacent
+		var adjacent = (dir.dot(normal)) * normal
+		var opposite = dir - adjacent
+	
+		dir = opposite - adjacent
 		
-		# include motions of a racket into the direction of the ball
-		opposite += (collision.collider_velocity / 2)
-
-		motion = opposite - adjacent
+		# reset speed if the ball gets hit by a racket
+		if collision.collider.get_meta("Player"):
+			print("collision")
+			# motion = motion.normalized() * speed
+			# include motions of a racket into the direction of the ball
+			# opposite += (collision.collider_velocity / 2)
 		
-		# limit the angle of a shot
-		var motion_speed = motion.length() if motion.length() >= speed else speed
-		motion = motion.normalized()
-		motion.y = clamp(motion.y, -0.8, 0.8)
-		motion = motion * motion_speed
+			# limit the angle of a shot
+			# var motion_speed = motion.length() if motion.length() >= speed else speed
+			# motion = motion.normalized()
+			# motion.y = clamp(motion.y, -0.8, 0.8)
+			# motion = motion * motion_speed
 		
 	var distance = motion.length()
 	speed_o_meter.text = str(distance / delta) 

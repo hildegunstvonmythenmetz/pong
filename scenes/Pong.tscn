@@ -13,6 +13,7 @@
 friction = 0.0
 
 [node name="Pong" type="Node2D"]
+editor/display_folded = true
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_lock_": true
