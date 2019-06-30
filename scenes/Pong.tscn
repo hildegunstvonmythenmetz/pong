@@ -1,13 +1,13 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://GameManager.gd" type="Script" id=1]
-[ext_resource path="res://Wall Top.gd" type="Script" id=2]
-[ext_resource path="res://Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Enemy Controller.gd" type="Script" id=4]
-[ext_resource path="res://Player Controller.gd" type="Script" id=5]
+[ext_resource path="res://scripts/GameManager.gd" type="Script" id=1]
+[ext_resource path="res://scripts/Wall Top.gd" type="Script" id=2]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scripts/Enemy Controller.gd" type="Script" id=4]
+[ext_resource path="res://scripts/Player Controller.gd" type="Script" id=5]
 [ext_resource path="res://Trigger_Wall.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Counter.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Center Line.gd" type="Script" id=8]
+[ext_resource path="res://scenes/Counter.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scripts/Center Line.gd" type="Script" id=8]
 
 [sub_resource type="PhysicsMaterial" id=1]
 friction = 0.0

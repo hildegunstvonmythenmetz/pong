@@ -16,18 +16,16 @@ _global_script_class_icons={
 [application]
 
 config/name="Pong"
-run/main_scene="res://Pong.tscn"
+run/main_scene="res://scenes/Pong.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
-PongConfig="*res://PongConfig.gd"
+PongConfig="*res://scripts/PongConfig.gd"
 
 [display]
 
 window/size/height=768
-window/size/borderless=true
-window/size/fullscreen=true
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
@@ -53,5 +51,4 @@ quality/intended_usage/framebuffer_allocation=1
 quality/intended_usage/framebuffer_allocation.mobile=1
 vram_compression/import_etc=true
 environment/default_clear_color=Color( 0, 0, 0, 1 )
-environment/default_environment="res://default_env.tres"
 quality/dynamic_fonts/use_oversampling=false

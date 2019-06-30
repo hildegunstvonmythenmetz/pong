@@ -11,7 +11,7 @@ func _ready():
 	position.x = (get_viewport_rect().size.x /2) + (PongConfig.screen_width / 2) - (PongConfig.width / 2)
 	position.y = get_viewport_rect().size.y / 2
 
-func _process(delta):
+func _physics_process(delta):
 	if (not PongConfig.ball):
 		return
 	var diff_speed = clamp(PongConfig.ball.position.y - position.y, -speed, speed)

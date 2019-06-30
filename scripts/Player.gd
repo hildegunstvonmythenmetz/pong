@@ -13,6 +13,7 @@ var screen_size = Vector2(0,0)
 func _ready():
 	_add_collision_shape()
 	screen_size = get_viewport_rect().size
+	owner.set_meta("Player", true)
 	
 func _add_collision_shape():
 	var shape = RectangleShape2D.new()
