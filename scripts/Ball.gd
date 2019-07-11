@@ -8,14 +8,12 @@ var initial_speed = PongConfig.bspeed
 var x = PongConfig.bextends
 var screen_size
 var started = false
-var speed_o_meter
 var motion
 var speed
 var dir
 
 func _ready():
 	screen_size = get_viewport().size
-	speed_o_meter = get_node("Speed Display")
 	_add_collision_shape()
 	position.x = screen_size.x / 2
 	position.y = screen_size.y / 2
@@ -29,7 +27,10 @@ func start():
 	dir = Vector2(sin(angle), cos(angle)).normalized()
 	# motion = dir * initial_speed
 	speed = initial_speed
-	started = true
+	get_node("Timer").start(3)
+
+	
+	
 	
 func _add_collision_shape():
 	var shape = RectangleShape2D.new()
@@ -66,12 +67,15 @@ func _physics_process(delta):
 				relative_player_velocity *= -1
 			speed += relative_player_velocity * 100
 			# limit the angle of a shot
-			# var motion_speed = motion.length() if motion.length() >= speed else speed
 			dir.y = clamp(dir.y, -0.8, 0.8)
 		dir = dir.normalized()
 
 	var distance = motion.length()
-	speed_o_meter.text = str(distance / delta) 
+
 
 func _draw():
 	draw_rect(Rect2(- x / 2 , - x / 2, x, x), Color.white) 
+
+
+func _on_Timer_timeout():
+	started = true

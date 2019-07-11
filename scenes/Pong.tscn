@@ -5,7 +5,7 @@
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scripts/Enemy Controller.gd" type="Script" id=4]
 [ext_resource path="res://scripts/Player Controller.gd" type="Script" id=5]
-[ext_resource path="res://Trigger_Wall.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/Trigger_Wall.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/Counter.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scripts/Center Line.gd" type="Script" id=8]
 
@@ -13,7 +13,6 @@
 friction = 0.0
 
 [node name="Pong" type="Node2D"]
-editor/display_folded = true
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_lock_": true
