@@ -4,7 +4,7 @@ extends Label
 # var a = 2
 # var b = "text"
 
-var counter = 0
+
 export var test = 10
 
 # Called when the node enters the scene tree for the first time.
@@ -15,6 +15,5 @@ func _ready():
 #func _process(delta):
 #	pass
 
-func score():
-	counter += 1
-	text = str(counter)
+func score(score):
+	text = str(score)
